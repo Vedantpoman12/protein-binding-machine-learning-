@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+# Protein Binding Bot
 
-## Project info
+A Machine Learning-powered chatbot for analyzing Drug-Target Interaction (DTI) predictions.
 
-**URL**: https://lovable.dev/projects/b34566e2-34b6-4d6d-8a92-af989dc0a2dc
+## Project Overview
 
-## How can I edit this code?
+This project implements an intelligent chatbot that allows users to query the results of a protein binding analysis. The bot is trained on a dataset of 1000 compound-target pairs and uses machine learning models to predict binding affinities.
 
-There are several ways of editing your application.
+### Key Features
 
-**Use Lovable**
+*   **Analysis Insights**: Ask about F1 scores, accuracy, and best performing models.
+*   **Binding Relationships**: Query detailed information about protein families (Kinases, GPCRs, etc.) and top targets.
+*   **Dynamic Knowledge**: The bot's knowledge base is built from comprehensive analysis summaries.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b34566e2-34b6-4d6d-8a92-af989dc0a2dc) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+*   **Frontend**: React, TypeScript, Vite
+*   **UI Components**: shadcn/ui, Tailwind CSS
+*   **Icons**: Lucide React
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Vedantpoman12/protein-binding-machine-learning-
+    ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Follow these steps:
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4.  Open `http://localhost:3000` in your browser.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Dataset Info
 
-# Step 3: Install the necessary dependencies.
-npm i
+The analysis is based on a synthetic dataset containing:
+*   **1000** Total Samples
+*   **484** Positive Binding Interactions
+*   **516** Negative Interactions
+*   **42** Molecular Features
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Models Evaluated
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b34566e2-34b6-4d6d-8a92-af989dc0a2dc) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*   Random Forest (Best Performer)
+*   Gradient Boosting (Best Performer)
+*   Logistic Regression
+*   Support Vector Machine (SVM)
+*   Neural Network

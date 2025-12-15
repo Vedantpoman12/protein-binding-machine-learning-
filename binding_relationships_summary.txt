@@ -1,0 +1,51 @@
+======================================================================
+PROTEIN-COMPOUND BINDING RELATIONSHIPS SUMMARY
+======================================================================
+
+OVERVIEW
+----------------------------------------------------------------------
+Total binding interactions: 484
+Unique compounds that bind: 484
+Unique protein targets: 100
+Unique protein families: 5
+
+BINDING BY PROTEIN FAMILY
+----------------------------------------------------------------------
+               Binding Count  Avg pKd  Min pKd  Max pKd  Avg Confidence
+target_family                                                          
+Enzyme                    98    7.682    6.516    9.969           0.630
+GPCR                     105    7.632    6.503   11.274           0.642
+IonChannel                69    7.350    6.501    9.801           0.650
+Kinase                   162    7.725    6.520   10.848           0.660
+Transporter               50    7.583    6.524   11.179           0.612
+
+TOP 20 MOST TARGETED PROTEINS
+----------------------------------------------------------------------
+ 1. TRG_2068     (Kinase      ):   9 compounds, Avg pKd: 7.32
+ 2. TRG_2072     (Kinase      ):   9 compounds, Avg pKd: 7.87
+ 3. TRG_2052     (Enzyme      ):   9 compounds, Avg pKd: 7.88
+ 4. TRG_2078     (Enzyme      ):   8 compounds, Avg pKd: 7.98
+ 5. TRG_2097     (GPCR        ):   8 compounds, Avg pKd: 7.38
+ 6. TRG_2075     (Kinase      ):   8 compounds, Avg pKd: 7.39
+ 7. TRG_2040     (Kinase      ):   8 compounds, Avg pKd: 7.22
+ 8. TRG_2087     (IonChannel  ):   7 compounds, Avg pKd: 7.40
+ 9. TRG_2098     (Enzyme      ):   7 compounds, Avg pKd: 8.40
+10. TRG_2055     (Enzyme      ):   7 compounds, Avg pKd: 7.75
+11. TRG_2085     (GPCR        ):   7 compounds, Avg pKd: 7.83
+12. TRG_2035     (GPCR        ):   7 compounds, Avg pKd: 7.10
+13. TRG_2029     (Kinase      ):   7 compounds, Avg pKd: 7.73
+14. TRG_2028     (IonChannel  ):   7 compounds, Avg pKd: 8.15
+15. TRG_2021     (Kinase      ):   7 compounds, Avg pKd: 7.99
+16. TRG_2045     (Kinase      ):   7 compounds, Avg pKd: 8.34
+17. TRG_2099     (Kinase      ):   7 compounds, Avg pKd: 8.04
+18. TRG_2010     (Kinase      ):   7 compounds, Avg pKd: 7.77
+19. TRG_2006     (Kinase      ):   7 compounds, Avg pKd: 7.42
+20. TRG_2000     (Kinase      ):   7 compounds, Avg pKd: 7.82
+
+======================================================================
+INTERPRETATION
+======================================================================
+- Higher pKd values indicate stronger binding affinity
+- Each row in the detailed CSV shows one compound-target binding pair
+- Assay confidence ranges from 0 to 1 (higher is more reliable)
+- Different assay types may have different reliability profiles

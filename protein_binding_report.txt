@@ -1,0 +1,101 @@
+======================================================================
+PROTEIN BINDING PREDICTION ANALYSIS REPORT
+======================================================================
+
+DATASET SUMMARY
+----------------------------------------------------------------------
+Total samples: 1000
+Features: 42
+Positive samples (binding): 484
+Negative samples (no binding): 516
+Positive rate: 48.40%
+
+TARGET FAMILIES
+----------------------------------------------------------------------
+Kinase: 269 (26.9%)
+GPCR: 234 (23.4%)
+Enzyme: 199 (19.9%)
+IonChannel: 168 (16.8%)
+Transporter: 130 (13.0%)
+
+MODEL PERFORMANCE COMPARISON
+----------------------------------------------------------------------
+Model                     Accuracy     F1 Score     ROC-AUC     
+----------------------------------------------------------------------
+Random Forest             1.0000       1.0000       1.0000      
+Gradient Boosting         1.0000       1.0000       1.0000      
+Logistic Regression       0.9650       0.9637       0.9961      
+SVM                       0.9250       0.9215       0.9756      
+Neural Network            0.8850       0.8757       0.9606      
+
+======================================================================
+DETAILED CLASSIFICATION REPORTS
+======================================================================
+
+
+Random Forest
+----------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  No Binding       1.00      1.00      1.00       103
+     Binding       1.00      1.00      1.00        97
+
+    accuracy                           1.00       200
+   macro avg       1.00      1.00      1.00       200
+weighted avg       1.00      1.00      1.00       200
+
+
+Gradient Boosting
+----------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  No Binding       1.00      1.00      1.00       103
+     Binding       1.00      1.00      1.00        97
+
+    accuracy                           1.00       200
+   macro avg       1.00      1.00      1.00       200
+weighted avg       1.00      1.00      1.00       200
+
+
+Logistic Regression
+----------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  No Binding       0.96      0.97      0.97       103
+     Binding       0.97      0.96      0.96        97
+
+    accuracy                           0.96       200
+   macro avg       0.97      0.96      0.96       200
+weighted avg       0.97      0.96      0.96       200
+
+
+SVM
+----------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  No Binding       0.92      0.94      0.93       103
+     Binding       0.94      0.91      0.92        97
+
+    accuracy                           0.93       200
+   macro avg       0.93      0.92      0.92       200
+weighted avg       0.93      0.93      0.92       200
+
+
+Neural Network
+----------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  No Binding       0.86      0.93      0.89       103
+     Binding       0.92      0.84      0.88        97
+
+    accuracy                           0.89       200
+   macro avg       0.89      0.88      0.88       200
+weighted avg       0.89      0.89      0.88       200
+
+
+======================================================================
+BEST MODEL: Gradient Boosting
+======================================================================
+Accuracy: 1.0000
+F1 Score: 1.0000
+ROC-AUC: 1.0000

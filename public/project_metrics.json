@@ -1,0 +1,84 @@
+{
+  "model_metrics": {
+    "Random Forest": {
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0,
+      "roc_auc": 100.0
+    },
+    "Gradient Boosting": {
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0,
+      "roc_auc": 100.0
+    },
+    "Logistic Regression": {
+      "accuracy": 96.5,
+      "precision": 96.88,
+      "recall": 95.88,
+      "f1_score": 96.37,
+      "roc_auc": 99.61
+    },
+    "SVM": {
+      "accuracy": 92.5,
+      "precision": 93.62,
+      "recall": 90.72,
+      "f1_score": 92.15,
+      "roc_auc": 97.56
+    },
+    "Neural Network": {
+      "accuracy": 88.5,
+      "precision": 92.05,
+      "recall": 83.51,
+      "f1_score": 87.57,
+      "roc_auc": 96.06
+    }
+  },
+  "protein_families": [
+    {
+      "name": "Kinase",
+      "total_count": 269,
+      "binding_count": 162,
+      "binding_rate": 60.22,
+      "avg_pKd": 7.73
+    },
+    {
+      "name": "GPCR",
+      "total_count": 234,
+      "binding_count": 105,
+      "binding_rate": 44.87,
+      "avg_pKd": 7.63
+    },
+    {
+      "name": "Enzyme",
+      "total_count": 199,
+      "binding_count": 98,
+      "binding_rate": 49.25,
+      "avg_pKd": 7.68
+    },
+    {
+      "name": "IonChannel",
+      "total_count": 168,
+      "binding_count": 69,
+      "binding_rate": 41.07,
+      "avg_pKd": 7.35
+    },
+    {
+      "name": "Transporter",
+      "total_count": 130,
+      "binding_count": 50,
+      "binding_rate": 38.46,
+      "avg_pKd": 7.58
+    }
+  ],
+  "dataset": {
+    "total_samples": 1000,
+    "positive_samples": 484,
+    "negative_samples": 516,
+    "num_features": 37,
+    "positive_rate": 48.4
+  },
+  "best_model": "Random Forest"
+}

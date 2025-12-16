@@ -79,7 +79,7 @@ class ProteinBindingPredictor:
         train_score = self.model.score(X_train_scaled, y_train)
         test_score = self.model.score(X_test_scaled, y_test)
         
-        print(f"✓ Model trained successfully!")
+        print(f"Model trained successfully!")
         print(f"  Training accuracy: {train_score:.4f}")
         print(f"  Test accuracy: {test_score:.4f}")
         
@@ -100,7 +100,7 @@ class ProteinBindingPredictor:
         with open(filename, 'wb') as f:
             pickle.dump(model_data, f)
         
-        print(f"\n✓ Model saved to: {filename}")
+        print(f"\nModel saved to: {filename}")
     
     def load_model(self, filename='binding_predictor_model.pkl'):
         """Load a trained model"""
@@ -113,10 +113,10 @@ class ProteinBindingPredictor:
             self.feature_names = model_data['feature_names']
             self.label_encoders = model_data['label_encoders']
             
-            print(f"✓ Model loaded from: {filename}")
+            print(f"Model loaded from: {filename}")
             return True
         except FileNotFoundError:
-            print(f"✗ Model file not found: {filename}")
+            print(f"Model file not found: {filename}")
             return False
     
     def predict_single(self, features):
@@ -202,7 +202,7 @@ class ProteinBindingPredictor:
         # Save
         df.to_csv(output_file, index=False)
         
-        print(f"✓ Predictions saved to: {output_file}")
+        print(f"Predictions saved to: {output_file}")
         print(f"\nSummary:")
         print(f"  Predicted BINDING: {sum(predictions)} ({sum(predictions)/len(predictions)*100:.1f}%)")
         print(f"  Predicted NO BINDING: {len(predictions)-sum(predictions)} ({(len(predictions)-sum(predictions))/len(predictions)*100:.1f}%)")
@@ -225,7 +225,7 @@ def create_sample_input():
     # Save
     sample_df.to_csv('sample_compounds_for_prediction.csv', index=False)
     
-    print("✓ Created sample input file: sample_compounds_for_prediction.csv")
+    print("Created sample input file: sample_compounds_for_prediction.csv")
     print(f"  Contains {len(sample_df)} compound-target pairs")
     
     return actual_interactions
@@ -269,7 +269,7 @@ def interactive_prediction():
             pred = results.iloc[i]['predicted_interaction']
             prob = results.iloc[i]['binding_probability']
             actual_val = actual[i]
-            match = "✓" if pred == actual_val else "✗"
+            match = "[Y]" if pred == actual_val else "[N]"
             
             print(f"{i+1:2d}. Predicted: {'BINDING' if pred==1 else 'NO BINDING':12s} "
                   f"(p={prob:.3f}) | Actual: {'BINDING' if actual_val==1 else 'NO BINDING':12s} {match}")
@@ -316,7 +316,7 @@ def interactive_prediction():
                     print(f"  -> Interpreted as '{corrected}'")
                     return encoder.transform([corrected])[0]
                 
-                print(f"  ❌ Invalid option. Please choose from: {', '.join(valid_options)}")
+                print(f"  Invalid option. Please choose from: {', '.join(valid_options)}")
 
         features['target_family_encoded'] = get_valid_input(
             "Target family", predictor.label_encoders['target_family'], 'Kinase'
@@ -351,7 +351,7 @@ def interactive_prediction():
         print(f"  Binding:    {result['probability_binding']:.3f} ({result['probability_binding']*100:.1f}%)")
         
         if result['binding']:
-            print(f"\n🎯 This compound is predicted to BIND to the target protein!")
+            print(f"\nThis compound is predicted to BIND to the target protein!")
             if result['confidence'] > 0.9:
                 print("   Very high confidence prediction!")
             elif result['confidence'] > 0.7:
@@ -359,7 +359,7 @@ def interactive_prediction():
             else:
                 print("   Moderate confidence - additional validation recommended.")
         else:
-            print(f"\n❌ This compound is predicted NOT to bind to the target protein.")
+            print(f"\nThis compound is predicted NOT to bind to the target protein.")
     
     elif choice == '3':
         print("\nTraining new model...")

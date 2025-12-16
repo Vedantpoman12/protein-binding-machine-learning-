@@ -52,168 +52,10 @@ const defaultAnalysisData: AnalysisData = {
     }
 };
 
-function getBotResponse(input: string, data: AnalysisData): BotResponse {
-    const lowerInput = input.toLowerCase();
+import { chatbotBrain } from "../utils/chatbotBrain";
 
-    // Protein Binding Specific Queries
-    if (lowerInput.includes('protein binding') || lowerInput.includes('binding') || lowerInput.includes('network') || lowerInput.includes('relationship')) {
-        return {
-            text: `What is Protein Binding?\n\nProtein binding occurs when a molecule (usually a drug or chemical) attaches to a specific protein target. This interaction can activate or inhibit the protein's function.\n\nVisual Analysis:\nThe chart below visualizes the binding network in our dataset, showing how different compound families interact with their targets.`,
-            imageUrl: "/images/binding_relationships_overview.png",
-            imageAlt: "Protein Binding Relationships Overview"
-        };
-    }
+// Removed old getBotResponse function in favor of ML-based chatbotBrain
 
-    // Educational Content - Basic Definitions
-    // Improved matching for typos (e.g., "hwta -> what")
-    const isQuestion = lowerInput.includes('what') || lowerInput.includes('hwta') || lowerInput.includes('define') || lowerInput.includes('explain');
-
-    if (lowerInput.includes('protein') && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is a Protein?\n\nProteins are large, complex molecules made up of chains of amino acids. They are essential for virtually all biological processes in living organisms.\n\nKey Points:\n• Building blocks of life\n• Made of 20 different amino acids\n• Perform specific functions (enzymes, antibodies, structural support)\n• Can bind to other molecules (like drugs or ligands)`
-        };
-    }
-
-    if (lowerInput.includes('binding') && (isQuestion || lowerInput.includes('mean')) && !lowerInput.includes('protein binding')) {
-        return {
-            text: `What is Binding?\n\nBinding refers to the interaction between two molecules, such as a drug (ligand) and a protein (target).\n\nKey Concepts:\n• Affinity: How strongly two molecules stick together\n• Specificity: How selective a molecule is for its target\n• pKd: A measure of binding strength (higher = stronger)\n\nIn drug discovery, we want compounds that bind strongly and specifically to disease-related proteins.`
-        };
-    }
-
-    if (lowerInput.includes('kinase') && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is a Kinase?\n\nKinases are a family of enzymes that add phosphate groups to proteins, a process called phosphorylation.\n\nWhy They Matter:\n• Control cell signaling pathways\n• Regulate cell growth, division, and death\n• Often mutated or overactive in cancer\n• Popular drug targets (e.g., cancer treatments)\n\nIn our dataset, Kinases have 162 binding interactions with an average pKd of 7.73.`
-        };
-    }
-
-    if (lowerInput.includes('gpcr') && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is a GPCR?\n\nGPCR stands for G Protein-Coupled Receptor, a large family of cell surface proteins.\n\nKey Features:\n• Located on cell membranes\n• Receive signals from outside the cell\n• Activate internal signaling pathways\n• Target for ~30% of all drugs\n\nExamples: Receptors for hormones, neurotransmitters, and sensory signals.\n\nOur dataset includes 105 GPCR interactions with an average pKd of 7.63.`
-        };
-    }
-
-    if (lowerInput.includes('enzyme') && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is an Enzyme?\n\nEnzymes are proteins that speed up chemical reactions in living organisms.\n\nCharacteristics:\n• Act as biological catalysts\n• Highly specific to their substrates\n• Can be inhibited by drugs\n• Essential for metabolism, DNA replication, and more\n\nEnzyme inhibitors are common drug strategies. Our dataset has 98 enzyme interactions.`
-        };
-    }
-
-    if ((lowerInput.includes('ion channel') || lowerInput.includes('ionchannel')) && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is an Ion Channel?\n\nIon channels are pore-forming proteins that allow specific ions (like sodium, potassium, calcium) to pass through cell membranes.\n\nFunctions:\n• Regulate electrical signals (nerves, heart)\n• Control muscle contraction\n• Maintain cell volume\n\nThey are major targets for drugs treating pain, hypertension, and epilepsy. Our dataset contains 69 ion channel interactions.`
-        };
-    }
-
-    if (lowerInput.includes('transporter') && (isQuestion || lowerInput.includes('mean'))) {
-        return {
-            text: `What is a Transporter?\n\nTransporters are membrane proteins that move substances (nutrients, ions, drugs) across cell membranes against their gradient.\n\nImportance:\n• Essential for nutrient uptake\n• Remove toxins from cells\n• Affect drug absorption and distribution\n\nModulating transporters can improve drug delivery. We have 50 transporter interactions in our data.`
-        };
-    }
-
-    if (lowerInput.includes('machine learning') || ((lowerInput.includes('ml') || lowerInput.includes('ai')) && isQuestion)) {
-        return {
-            text: `What is Machine Learning?\n\nMachine Learning (ML) is a type of artificial intelligence where computers learn patterns from data without being explicitly programmed.\n\nIn This Project:\n• We trained models to predict protein-drug binding\n• Used features like molecular descriptors and protein properties\n• Evaluated models: Random Forest, SVM, Neural Networks\n• Best accuracy: 100% (Random Forest & Gradient Boosting)\n\nML helps discover new drugs faster by predicting which compounds will work.`
-        };
-    }
-
-    if (lowerInput.includes('f1') || lowerInput.includes('score')) {
-        return {
-            text: `The F1 scores are:\n` +
-                `Best (${data.bestModels.names.join('/')}): ${data.bestModels.f1}\n` +
-                data.otherModels.map(m => `• ${m.name}: ${m.f1}`).join('\n'),
-            imageUrl: "/images/model_comparison.png",
-            imageAlt: "Model Comparison Chart"
-        };
-    }
-
-    if (lowerInput.includes('accuracy') || lowerInput.includes('precision')) {
-        return {
-            text: `Here are the Accuracy metrics:\n` +
-                `Best (${data.bestModels.names.join('/')}): ${data.bestModels.accuracy}\n` +
-                data.otherModels.map(m => `• ${m.name}: ${m.accuracy}`).join('\n'),
-            imageUrl: "/images/model_comparison.png",
-            imageAlt: "Model Comparison Chart"
-        };
-    }
-
-    if (lowerInput.includes('recall')) {
-        return {
-            text: `While specific recall values weren't in the summary, the F1 scores (which combine precision and recall) are:\n` +
-                `Best: ${data.bestModels.f1}\n` +
-                data.otherModels.map(m => `• ${m.name}: ${m.f1}`).join('\n'),
-            imageUrl: "/images/precision_recall_curves.png",
-            imageAlt: "Precision Recall Curves"
-        };
-    }
-
-    if (lowerInput.includes('best') || lowerInput.includes('model')) {
-        return {
-            text: `The best performing models are ${data.bestModels.names.join(' and ')} with ${data.bestModels.accuracy} accuracy and F1 score.`,
-            imageUrl: "/images/roc_curves.png",
-            imageAlt: "ROC Curves"
-        };
-    }
-
-    if (lowerInput.includes('matrix') || lowerInput.includes('confusion')) {
-        return {
-            text: "Here are the confusion matrices for the trained models, showing true positives, false positives, true negatives, and false negatives.",
-            imageUrl: "/images/confusion_matrices.png",
-            imageAlt: "Confusion Matrices"
-        };
-    }
-
-    if (lowerInput.includes('feature') || lowerInput.includes('importance')) {
-        return {
-            text: "These are the most important features used by the Random Forest model to predict binding.",
-            imageUrl: "/images/feature_importance.png",
-            imageAlt: "Feature Importance"
-        };
-    }
-
-    if (lowerInput.includes('data') || lowerInput.includes('sample')) {
-        return {
-            text: `The dataset consists of ${data.dataset.total} compound-target pairs (${data.dataset.positive} positive, ${data.dataset.negative} negative) with ${data.dataset.features} features.`
-        };
-    }
-
-    if (lowerInput.includes('target') || lowerInput.includes('protein') || lowerInput.includes('family') || lowerInput.includes('families')) {
-        const familiesText = data.bindingStats?.families.map(f => `• ${f.name}: ${f.count} interactions`).join('\n');
-
-        return {
-            text: `Proteins in this Project:\n\nOur dataset focuses on binding interactions across several key protein families:\n\n${familiesText}\n\nYou can ask "What is a Kinase?" or "What is a GPCR?" to learn more about specific types.`
-        };
-    }
-
-    if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
-        return {
-            text: "Hello! I can help you understand protein binding, explain ML concepts, or answer questions about the analysis. Try asking 'What is a protein?' or 'Show me binding relationships'."
-        };
-    }
-
-    if (lowerInput.includes('project') || lowerInput.includes('about') || lowerInput.includes('goal') || lowerInput.includes('what is this')) {
-        return {
-            text: `Project Overview: This is a Machine Learning project for Drug-Target Interaction (DTI) prediction.\n\n` +
-                `Goal: To predict whether a chemical compound will bind to a specific protein target.\n` +
-                `Methodology: We trained multiple models (Random Forest, Gradient Boosting, etc.) on a dataset of 1000 compound-target pairs.`
-        };
-    }
-
-    // Generic Image Handler for "other stuff"
-    if (lowerInput.includes('show me') || lowerInput.includes('image of') || lowerInput.includes('picture of')) {
-        const subject = lowerInput.replace('show me', '').replace('image of', '').replace('picture of', '').replace(/a /g, '').replace(/an /g, '').trim();
-        if (subject.length > 0) {
-            return {
-                text: `Here is an image of ${subject} for you.`,
-                imageUrl: `https://placehold.co/600x400?text=${encodeURIComponent(subject)}`,
-                imageAlt: subject
-            };
-        }
-    }
-
-    return {
-        text: "I can tell you about the Project Overview, F1 scores, Accuracy, Protein Families, Top Targets, or show you charts like ROC curves and Confusion Matrices. What would you like to know?"
-    };
-}
 
 const ChatContainer = () => {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -241,7 +83,7 @@ const ChatContainer = () => {
 
         // Simulate AI response delay
         setTimeout(() => {
-            const response = getBotResponse(content, analysisData);
+            const response = chatbotBrain.getResponse(content, analysisData);
             const aiResponse: Message = {
                 id: (Date.now() + 1).toString(),
                 content: response.text,

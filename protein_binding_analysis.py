@@ -162,7 +162,7 @@ def visualize_results(results, predictions, probabilities, y_test, models, X_tra
     
     plt.tight_layout()
     plt.savefig('model_comparison.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: model_comparison.png")
+    print("Saved: model_comparison.png")
     plt.close()
     
     # 2. ROC Curves
@@ -180,7 +180,7 @@ def visualize_results(results, predictions, probabilities, y_test, models, X_tra
     plt.legend(loc='lower right', fontsize=10)
     plt.grid(alpha=0.3)
     plt.savefig('roc_curves.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: roc_curves.png")
+    print("Saved: roc_curves.png")
     plt.close()
     
     # 3. Confusion Matrices
@@ -202,7 +202,7 @@ def visualize_results(results, predictions, probabilities, y_test, models, X_tra
     
     plt.tight_layout()
     plt.savefig('confusion_matrices.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: confusion_matrices.png")
+    print("Saved: confusion_matrices.png")
     plt.close()
     
     # 4. Feature Importance (Random Forest)
@@ -222,7 +222,7 @@ def visualize_results(results, predictions, probabilities, y_test, models, X_tra
     plt.grid(axis='x', alpha=0.3)
     plt.tight_layout()
     plt.savefig('feature_importance.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: feature_importance.png")
+    print("Saved: feature_importance.png")
     plt.close()
     
     # 5. Precision-Recall Curves
@@ -238,7 +238,7 @@ def visualize_results(results, predictions, probabilities, y_test, models, X_tra
     plt.legend(loc='lower left', fontsize=10)
     plt.grid(alpha=0.3)
     plt.savefig('precision_recall_curves.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: precision_recall_curves.png")
+    print("Saved: precision_recall_curves.png")
     plt.close()
 
 def generate_report(results, y_test, predictions, df):
@@ -295,7 +295,7 @@ def generate_report(results, y_test, predictions, df):
         f.write(f"F1 Score: {best_model[1]['f1_score']:.4f}\n")
         f.write(f"ROC-AUC: {best_model[1]['roc_auc']:.4f}\n")
     
-    print("✓ Saved: protein_binding_report.txt")
+    print("Saved: protein_binding_report.txt")
 
 def main():
     """Main execution function"""
@@ -353,7 +353,7 @@ def main():
     # Best model
     best_model_name = max(results.items(), key=lambda x: x[1]['roc_auc'])[0]
     best_auc = results[best_model_name]['roc_auc']
-    print(f"\n🏆 Best Model: {best_model_name} (ROC-AUC: {best_auc:.4f})")
+    print(f"\nBest Model: {best_model_name} (ROC-AUC: {best_auc:.4f})")
     print("="*70 + "\n")
 
 if __name__ == "__main__":

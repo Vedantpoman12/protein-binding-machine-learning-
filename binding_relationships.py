@@ -67,7 +67,7 @@ def analyze_binding_relationships():
     
     # Save detailed relationships
     binding_table.to_csv('binding_relationships_detailed.csv', index=False)
-    print(f"✓ Saved: binding_relationships_detailed.csv ({len(binding_table)} binding pairs)")
+    print(f"Saved: binding_relationships_detailed.csv ({len(binding_table)} binding pairs)")
     
     # Sample of binding relationships
     print("\n" + "="*70)
@@ -136,7 +136,7 @@ def analyze_binding_relationships():
     
     plt.tight_layout()
     plt.savefig('binding_relationships_overview.png', dpi=300, bbox_inches='tight')
-    print("\n✓ Saved: binding_relationships_overview.png")
+    print("\nSaved: binding_relationships_overview.png")
     plt.close()
     
     # Visualization 2: Network-style view
@@ -168,7 +168,7 @@ def analyze_binding_relationships():
     
     plt.tight_layout()
     plt.savefig('binding_network_map.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: binding_network_map.png")
+    print("Saved: binding_network_map.png")
     plt.close()
     
     # Create summary report
@@ -209,7 +209,7 @@ def analyze_binding_relationships():
         f.write("- Assay confidence ranges from 0 to 1 (higher is more reliable)\n")
         f.write("- Different assay types may have different reliability profiles\n")
     
-    print("✓ Saved: binding_relationships_summary.txt")
+    print("Saved: binding_relationships_summary.txt")
     
     print("\n" + "="*70)
     print("ANALYSIS COMPLETE!")

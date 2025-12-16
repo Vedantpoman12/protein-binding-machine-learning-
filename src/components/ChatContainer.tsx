@@ -58,7 +58,7 @@ function getBotResponse(input: string, data: AnalysisData): BotResponse {
     // Protein Binding Specific Queries
     if (lowerInput.includes('protein binding') || lowerInput.includes('binding') || lowerInput.includes('network') || lowerInput.includes('relationship')) {
         return {
-            text: `**What is Protein Binding?**\n\nProtein binding occurs when a molecule (usually a drug or chemical) attaches to a specific protein target. This interaction can activate or inhibit the protein's function.\n\n**Visual Analysis:**\nThe chart below visualizes the binding network in our dataset, showing how different compound families interact with their targets.`,
+            text: `What is Protein Binding?\n\nProtein binding occurs when a molecule (usually a drug or chemical) attaches to a specific protein target. This interaction can activate or inhibit the protein's function.\n\nVisual Analysis:\nThe chart below visualizes the binding network in our dataset, showing how different compound families interact with their targets.`,
             imageUrl: "/images/binding_relationships_overview.png",
             imageAlt: "Protein Binding Relationships Overview"
         };
@@ -70,49 +70,49 @@ function getBotResponse(input: string, data: AnalysisData): BotResponse {
 
     if (lowerInput.includes('protein') && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is a Protein?**\n\nProteins are large, complex molecules made up of chains of amino acids. They are essential for virtually all biological processes in living organisms.\n\n**Key Points:**\n• Building blocks of life\n• Made of 20 different amino acids\n• Perform specific functions (enzymes, antibodies, structural support)\n• Can bind to other molecules (like drugs or ligands)`
+            text: `What is a Protein?\n\nProteins are large, complex molecules made up of chains of amino acids. They are essential for virtually all biological processes in living organisms.\n\nKey Points:\n• Building blocks of life\n• Made of 20 different amino acids\n• Perform specific functions (enzymes, antibodies, structural support)\n• Can bind to other molecules (like drugs or ligands)`
         };
     }
 
     if (lowerInput.includes('binding') && (isQuestion || lowerInput.includes('mean')) && !lowerInput.includes('protein binding')) {
         return {
-            text: `**What is Binding?**\n\nBinding refers to the interaction between two molecules, such as a drug (ligand) and a protein (target).\n\n**Key Concepts:**\n• **Affinity**: How strongly two molecules stick together\n• **Specificity**: How selective a molecule is for its target\n• **pKd**: A measure of binding strength (higher = stronger)\n\nIn drug discovery, we want compounds that bind strongly and specifically to disease-related proteins.`
+            text: `What is Binding?\n\nBinding refers to the interaction between two molecules, such as a drug (ligand) and a protein (target).\n\nKey Concepts:\n• Affinity: How strongly two molecules stick together\n• Specificity: How selective a molecule is for its target\n• pKd: A measure of binding strength (higher = stronger)\n\nIn drug discovery, we want compounds that bind strongly and specifically to disease-related proteins.`
         };
     }
 
     if (lowerInput.includes('kinase') && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is a Kinase?**\n\nKinases are a family of enzymes that add phosphate groups to proteins, a process called phosphorylation.\n\n**Why They Matter:**\n• Control cell signaling pathways\n• Regulate cell growth, division, and death\n• Often mutated or overactive in cancer\n• Popular drug targets (e.g., cancer treatments)\n\nIn our dataset, Kinases have 162 binding interactions with an average pKd of 7.73.`
+            text: `What is a Kinase?\n\nKinases are a family of enzymes that add phosphate groups to proteins, a process called phosphorylation.\n\nWhy They Matter:\n• Control cell signaling pathways\n• Regulate cell growth, division, and death\n• Often mutated or overactive in cancer\n• Popular drug targets (e.g., cancer treatments)\n\nIn our dataset, Kinases have 162 binding interactions with an average pKd of 7.73.`
         };
     }
 
     if (lowerInput.includes('gpcr') && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is a GPCR?**\n\nGPCR stands for G Protein-Coupled Receptor, a large family of cell surface proteins.\n\n**Key Features:**\n• Located on cell membranes\n• Receive signals from outside the cell\n• Activate internal signaling pathways\n• Target for ~30% of all drugs\n\n**Examples:** Receptors for hormones, neurotransmitters, and sensory signals.\n\nOur dataset includes 105 GPCR interactions with an average pKd of 7.63.`
+            text: `What is a GPCR?\n\nGPCR stands for G Protein-Coupled Receptor, a large family of cell surface proteins.\n\nKey Features:\n• Located on cell membranes\n• Receive signals from outside the cell\n• Activate internal signaling pathways\n• Target for ~30% of all drugs\n\nExamples: Receptors for hormones, neurotransmitters, and sensory signals.\n\nOur dataset includes 105 GPCR interactions with an average pKd of 7.63.`
         };
     }
 
     if (lowerInput.includes('enzyme') && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is an Enzyme?**\n\nEnzymes are proteins that speed up chemical reactions in living organisms.\n\n**Characteristics:**\n• Act as biological catalysts\n• Highly specific to their substrates\n• Can be inhibited by drugs\n• Essential for metabolism, DNA replication, and more\n\nEnzyme inhibitors are common drug strategies. Our dataset has 98 enzyme interactions.`
+            text: `What is an Enzyme?\n\nEnzymes are proteins that speed up chemical reactions in living organisms.\n\nCharacteristics:\n• Act as biological catalysts\n• Highly specific to their substrates\n• Can be inhibited by drugs\n• Essential for metabolism, DNA replication, and more\n\nEnzyme inhibitors are common drug strategies. Our dataset has 98 enzyme interactions.`
         };
     }
 
     if ((lowerInput.includes('ion channel') || lowerInput.includes('ionchannel')) && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is an Ion Channel?**\n\nIon channels are pore-forming proteins that allow specific ions (like sodium, potassium, calcium) to pass through cell membranes.\n\n**Functions:**\n• Regulate electrical signals (nerves, heart)\n• Control muscle contraction\n• Maintain cell volume\n\nThey are major targets for drugs treating pain, hypertension, and epilepsy. Our dataset contains 69 ion channel interactions.`
+            text: `What is an Ion Channel?\n\nIon channels are pore-forming proteins that allow specific ions (like sodium, potassium, calcium) to pass through cell membranes.\n\nFunctions:\n• Regulate electrical signals (nerves, heart)\n• Control muscle contraction\n• Maintain cell volume\n\nThey are major targets for drugs treating pain, hypertension, and epilepsy. Our dataset contains 69 ion channel interactions.`
         };
     }
 
     if (lowerInput.includes('transporter') && (isQuestion || lowerInput.includes('mean'))) {
         return {
-            text: `**What is a Transporter?**\n\nTransporters are membrane proteins that move substances (nutrients, ions, drugs) across cell membranes against their gradient.\n\n**Importance:**\n• Essential for nutrient uptake\n• Remove toxins from cells\n• Affect drug absorption and distribution\n\nModulating transporters can improve drug delivery. We have 50 transporter interactions in our data.`
+            text: `What is a Transporter?\n\nTransporters are membrane proteins that move substances (nutrients, ions, drugs) across cell membranes against their gradient.\n\nImportance:\n• Essential for nutrient uptake\n• Remove toxins from cells\n• Affect drug absorption and distribution\n\nModulating transporters can improve drug delivery. We have 50 transporter interactions in our data.`
         };
     }
 
     if (lowerInput.includes('machine learning') || ((lowerInput.includes('ml') || lowerInput.includes('ai')) && isQuestion)) {
         return {
-            text: `**What is Machine Learning?**\n\nMachine Learning (ML) is a type of artificial intelligence where computers learn patterns from data without being explicitly programmed.\n\n**In This Project:**\n• We trained models to predict protein-drug binding\n• Used features like molecular descriptors and protein properties\n• Evaluated models: Random Forest, SVM, Neural Networks\n• Best accuracy: 100% (Random Forest & Gradient Boosting)\n\nML helps discover new drugs faster by predicting which compounds will work.`
+            text: `What is Machine Learning?\n\nMachine Learning (ML) is a type of artificial intelligence where computers learn patterns from data without being explicitly programmed.\n\nIn This Project:\n• We trained models to predict protein-drug binding\n• Used features like molecular descriptors and protein properties\n• Evaluated models: Random Forest, SVM, Neural Networks\n• Best accuracy: 100% (Random Forest & Gradient Boosting)\n\nML helps discover new drugs faster by predicting which compounds will work.`
         };
     }
 
@@ -180,7 +180,7 @@ function getBotResponse(input: string, data: AnalysisData): BotResponse {
         const familiesText = data.bindingStats?.families.map(f => `• ${f.name}: ${f.count} interactions`).join('\n');
 
         return {
-            text: `**Proteins in this Project**:\n\nOur dataset focuses on binding interactions across several key protein families:\n\n${familiesText}\n\nYou can ask "What is a Kinase?" or "What is a GPCR?" to learn more about specific types.`
+            text: `Proteins in this Project:\n\nOur dataset focuses on binding interactions across several key protein families:\n\n${familiesText}\n\nYou can ask "What is a Kinase?" or "What is a GPCR?" to learn more about specific types.`
         };
     }
 
@@ -266,9 +266,7 @@ const ChatContainer = () => {
                         <h2 className="text-2xl font-semibold text-foreground mb-2">
                             How can I help you today?
                         </h2>
-                        <p className="text-muted-foreground text-sm max-w-md mb-6">
-                            I'm your AI assistant, ready to answer questions about your protein binding analysis.
-                        </p>
+
                     </div>
                 ) : (
                     <>
